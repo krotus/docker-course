@@ -1,0 +1,12 @@
+{
+    "name": "andreu/multi-stage",
+    "authors": [
+        {
+            "name": "krotus",
+            "email": "andreus.sala@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.9"
+    }
+}
