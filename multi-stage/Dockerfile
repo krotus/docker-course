@@ -21,4 +21,4 @@ RUN pecl install xdebug-3.3.2 \
 
 WORKDIR /app
 COPY --from=backend /app/ /var/www/html/
-COPY php.ini /usr/local/etc/php/php.ini
+COPY ./php.ini /usr/local/etc/php/php.ini
