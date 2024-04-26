@@ -1,0 +1,24 @@
+name: build
+
+on: [push]
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        run: |
+          TAG=`git rev-parse --short HEAD` \
+          && docker build -t docker-course-${TAG} . \
+          && docker tag docker-course-${TAG} andreusala/docker-course:${TAG} \
+          && docker tag docker-course-${TAG} andreusala/docker-course:latest \
+          && docker push andreusala/docker-course:${TAG}
+          && docker push andreusala/docker-course:latest
