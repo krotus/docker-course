@@ -1,0 +1,8 @@
+version: '2.3'
+services:
+  app:
+    image: andreusala/docker-course:1.0.1
+    volumes:
+      - ${PWD}:/var/www/html
+    ports:
+      - 8000:80
