@@ -17,7 +17,7 @@ jobs:
       - name: Build and push
         run: |
           TAG=`git rev-parse --short HEAD` \
-          && docker build . -t docker-course-${TAG} -f multi-stage/Dockerfile \
+          && docker build ./multi-stage -t docker-course-${TAG} -f multi-stage/Dockerfile \
           && docker tag docker-course-${TAG} andreusala/docker-course:${TAG} \
           && docker tag docker-course-${TAG} andreusala/docker-course:latest \
           && docker push andreusala/docker-course:${TAG}
